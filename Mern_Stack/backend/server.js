@@ -1,5 +1,22 @@
 import express from 'express';
 import data from './data.js';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+
+
+ mongoose.connect(process.env.MONGODB_URI,{
+  useNewUrlParser: true,
+   useUnifiedTopology: true,
+    })
+  .then(() => {
+    console.log('connected to db');
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 
 const app = express();
 // test
